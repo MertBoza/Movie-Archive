@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="assets/navLogo.jpg" type="image/x-icon">
+    <title>Movie Archive</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="home.html">
+                <img class="logo1" src="assets/navLogo.jpg" alt="navLogo">
+            </a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="login.html">Log In</a></li>
+        </ul>
+      </nav>
+
+      <div class="register-container">
+        <h2 class="register-title">Register</h2>
+        <form action="#" method="post" class="register-form">
+            <label for="username" class="register-label">Username</label>
+            <input type="text" id="username" name="username" class="register-input" required>
+    
+            <label for="email" class="register-label">Email</label>
+            <input type="email" id="email" name="email" class="register-input" required>
+
+            <label for="phone" class="register-label">Phone Number</label>
+            <input type="number" id="phone" name="phone" class="register-input" required>
+    
+            <label for="password" class="register-label">Password</label>
+            <input type="password" id="password" name="password" class="register-input" required>
+    
+            <label for="confirm-password" class="register-label">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" class="register-input" required>
+    
+            <button type="submit" class="register-button">Register</button>
+        </form>
+    </div>
+    
+    
+</body>
+</html>
