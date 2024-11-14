@@ -18,6 +18,7 @@ body {
   position: relative;
 }
 
+
 .logo {
   color: #fff;
   font-size: 24px;
@@ -95,7 +96,7 @@ body {
 }
 
 .movie-card {
-  background-color: #fff;
+  background-color: #3c3c3c;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -122,12 +123,12 @@ body {
 .movie-title {
   font-size: 1.2em;
   margin: 0;
-  color: #333;
+  color: #ffffff;
 }
 
 .director, .categories {
   font-size: 0.9em;
-  color: #666;
+  color: #ffffff;
   margin: 5px 0;
 }
 
@@ -146,6 +147,66 @@ body {
 
 .details-button:hover {
   background-color: #0056b3;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #3c3c3c;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.contact-title {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.contact-input,
+.contact-textarea {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;  
+  background-color: lightgray;
+}
+
+.contact-input:focus, .contact-textarea:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.contact-button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #555;
 }
 
 
