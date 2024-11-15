@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
     <link rel="icon" href="assets/navLogo.jpg" type="image/x-icon">
     <title>Movie Archive</title>
 </head>
@@ -28,19 +29,24 @@
         <h2 class="contact-title">Contact Us</h2>
         <form action="#" method="post" class="contact-form">
             <label for="name" class="contact-label">Name</label>
-            <input type="text" id="name" name="name" class="contact-input" required>
-
+            <input type="text" id="name" name="name" class="contact-input">
+            <p id="name-error" class="error-message" style="display: none;"></p>
+            
             <label for="surname" class="contact-label">Surname</label>
-            <input type="text" id="surname" name="surname" class="contact-input" required>
-
+            <input type="text" id="surname" name="surname" class="contact-input">
+            <p id="surname-error" class="error-message" style="display: none;"></p>
+            
             <label for="email" class="contact-label">Email</label>
-            <input type="email" id="email" name="email" class="contact-input" required>
-
+            <input type="email" id="email" name="email" class="contact-input">
+            <p id="email-error" class="error-message" style="display: none;"></p>
+            
             <label for="phone" class="contact-label">Phone Number</label>
-            <input type="number" id="phone" name="phone" class="contact-input" required>
-
+            <input type="number" id="phone" name="phone" class="contact-input">
+            <p id="phone-error" class="error-message" style="display: none;"></p>
+            
             <label for="message" class="contact-label">Message</label>
-            <textarea id="message" name="message" class="contact-textarea" rows="4" required></textarea>
+            <textarea id="message" name="message" class="contact-textarea" rows="4"></textarea>
+            <p id="message-error" class="error-message" style="display: none;"></p>
 
             <button type="submit" class="contact-button">Submit</button>
         </form>
