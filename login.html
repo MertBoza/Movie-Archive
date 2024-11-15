@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
     <link rel="icon" href="assets/navLogo.jpg" type="image/x-icon">
     <title>Movie Archive</title>
 </head>
@@ -29,10 +30,12 @@
         <h2 class="login-title">Log In</h2>
         <form action="#" method="post" class="login-form">
             <label for="username" class="login-label">Username or Email</label>
-            <input type="text" id="username" name="username" class="login-input" required>
+            <input type="text" id="username" name="username" class="login-input">
+            <p id="username-error" class="error-message" style="display: none;">Please enter your username or email.</p>
     
             <label for="password" class="login-label">Password</label>
-            <input type="password" id="password" name="password" class="login-input" required>
+            <input type="password" id="password" name="password" class="login-input">
+            <p id="password-error" class="error-message" style="display: none;">Please enter your password.</p>
     
             <button type="submit" class="login-button">Log In</button>
             <a href="register.html" class="register-button">Register</a>
