@@ -1,29 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Helper function to show the error message and style the input
     function showError(input, errorElement, message) {
         errorElement.textContent = message;
         errorElement.style.display = 'block';
         input.style.borderColor = 'red';
     }
 
-    // Helper function to hide the error message
     function hideError(input, errorElement) {
         errorElement.style.display = 'none';
         input.style.borderColor = '';
     }
 
-    // Validate email using regex
     function validateEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     }
 
-    // Validate phone number (basic length check, can be customized)
     function validatePhone(phone) {
         return phone.length >= 10;
     }
 
-    // Login form validation
     const loginForm = document.querySelector('.login-form');
     if (loginForm) {
         const usernameInput = document.getElementById('username');
@@ -58,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Register form validation
     const registerForm = document.querySelector('.register-form');
     if (registerForm) {
         const usernameInput = document.getElementById('username');
@@ -121,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Contact form validation
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         const nameInput = document.getElementById('name');
