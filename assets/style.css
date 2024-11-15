@@ -135,7 +135,7 @@ body {
 
 .details-button {
   display: inline-block;
-  background-color: #007BFF;
+  background-color: black;
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -147,7 +147,7 @@ body {
 }
 
 .details-button:hover {
-  background-color: #0056b3;
+  background-color: red;
 }
 
 .contact-container {
