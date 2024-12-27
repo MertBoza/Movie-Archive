@@ -19,11 +19,11 @@
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="login.html">Log In</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="news.php">News</a></li>
+            <li><a href="login.php">Log In</a></li>
         </ul>
       </nav>
 
@@ -39,7 +39,7 @@
             <p id="password-error" class="error-message" style="display: none;">Please enter your password.</p>
     
             <button type="submit" class="login-button">Log In</button>
-            <a href="register.html" class="register-button">Register</a>
+            <a href="register.php" class="register-button">Register</a>
         </form>
     </div>
     
