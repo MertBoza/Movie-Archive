@@ -16,29 +16,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validatePhone(phone) {
-        return phone.length >= 10;
+        return phone.length >= 9;
     }
 
     const loginForm = document.querySelector('.login-form');
     if (loginForm) {
-        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
-        const usernameError = document.getElementById('username-error');
+        const emailError = document.getElementById('email-error');
         const passwordError = document.getElementById('password-error');
 
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
 
-            hideError(usernameInput, usernameError);
+            hideError(emailInput, emailError);
             hideError(passwordInput, passwordError);
 
             let isValid = true;
 
-            if (username === '') {
-                showError(usernameInput, usernameError, 'Please enter your username or email.');
+            if (email === '') {
+                showError(emailInput, emailError, 'Please enter your email.');
                 isValid = false;
             }
 
@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (isValid) {
+                console.log("Form submitted with:", email, password);
                 loginForm.submit();
             }
         });

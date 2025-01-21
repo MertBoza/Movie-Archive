@@ -1,3 +1,30 @@
+<?php
+include_once 'database.php';
+include_once 'users.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $db = new Database();
+    $connection = $db->getConnection();
+    $users = new Users($connection);
+
+    // Get form data
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+
+    // Register the user
+    if ($users->register($username, $email, $phone, $password)) {
+        header("Location: login.php"); // Redirect to login page
+        exit;
+    } else {
+        echo "Error registering user!";
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +56,7 @@
 
       <div class="register-container">
         <h2 class="register-title">Register</h2>
-        <form action="#" method="post" class="register-form">
+        <form action="register.php" method="post" class="register-form">
             <label for="username" class="register-label">Username</label>
             <input type="text" id="username" name="username" class="register-input">
             <p id="username-error" class="error-message" style="display: none;">Please enter a username.</p>

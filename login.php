@@ -1,3 +1,31 @@
+<?php
+session_start();
+include_once 'database.php';
+include_once 'users.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $db = new Database();
+    $connection = $db->getConnection();
+    $users = new Users($connection);
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if ($users->login($email, $password)) {
+        header("Location: home.php");
+        exit;
+    } else {
+        echo "Invalid login credentials!";
+    }
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +57,11 @@
 
       <div class="login-container">
         <h2 class="login-title">Log In</h2>
-        <form action="#" method="post" class="login-form">
-            <label for="username" class="login-label">Username or Email</label>
-            <input type="text" id="username" name="username" class="login-input">
-            <p id="username-error" class="error-message" style="display: none;">Please enter your username or email.</p>
+        <form action="login.php" method="post" class="login-form">
+            <label for="Email" class="login-label">Email</label>
+            <input type="text" id="email" name="email" class="login-input">
+            <p id="email-error" class="error-message" style="display: none;">Please enter your email.</p>
+
     
             <label for="password" class="login-label">Password</label>
             <input type="password" id="password" name="password" class="login-input">
