@@ -11,9 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Attempt login
     if ($users->login($email, $password)) {
-        $_SESSION['user_id'] = 1; // Store the user's ID in the session
+        $_SESSION['user_id'] = 1;
         header("Location: home.php");
         exit;
     } else {

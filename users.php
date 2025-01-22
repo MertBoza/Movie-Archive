@@ -8,7 +8,6 @@ class Users {
     }
 
     public function register($username, $email, $phone, $password) {
-        // Hash the password before storing it
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
         $query = "INSERT INTO {$this->table_name} (username, email, phone, password) 
@@ -19,7 +18,7 @@ class Users {
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':phone', $phone);
-        $stmt->bindParam(':password', $hashed_password); // Use hashed password
+        $stmt->bindParam(':password', $hashed_password);
     
         if ($stmt->execute()) {
             return true;
@@ -37,12 +36,10 @@ class Users {
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Check if password matches the stored hash
             if (password_verify($password, $row['password'])) {
-                // Set session variables for the logged-in user
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
-                return true; // Login successful
+                return true;
             } else {
                 echo "Password mismatch!";
             }
