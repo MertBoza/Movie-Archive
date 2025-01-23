@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function hideError(input, errorElement) {
-        errorElement.style.display = 'none';
-        input.style.borderColor = '';
+        if (errorElement) {
+            errorElement.style.display = 'none';
+            input.style.borderColor = '';
+        }
     }
 
     function validateEmail(email) {
@@ -19,40 +21,69 @@ document.addEventListener('DOMContentLoaded', function() {
         return phone.length >= 9;
     }
 
-    const loginForm = document.querySelector('.login-form');
-    if (loginForm) {
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        const nameInput = document.getElementById('name');
+        const surnameInput = document.getElementById('surname');
         const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
-        const emailError = document.getElementById('email-error');
-        const passwordError = document.getElementById('password-error');
+        const phoneInput = document.getElementById('phone');
+        const messageInput = document.getElementById('message');
 
-        loginForm.addEventListener('submit', function(event) {
+        const nameError = document.getElementById('name-error');
+        const surnameError = document.getElementById('surname-error');
+        const emailError = document.getElementById('email-error');
+        const phoneError = document.getElementById('phone-error');
+        const messageError = document.getElementById('message-error');
+
+        contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
+            const name = nameInput.value.trim();
+            const surname = surnameInput.value.trim();
             const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const message = messageInput.value.trim();
 
+            hideError(nameInput, nameError);
+            hideError(surnameInput, surnameError);
             hideError(emailInput, emailError);
-            hideError(passwordInput, passwordError);
+            hideError(phoneInput, phoneError);
+            hideError(messageInput, messageError);
 
             let isValid = true;
 
-            if (email === '') {
-                showError(emailInput, emailError, 'Please enter your email.');
+            if (name === '') {
+                showError(nameInput, nameError, 'Please enter your name.');
                 isValid = false;
             }
 
-            if (password === '') {
-                showError(passwordInput, passwordError, 'Please enter your password.');
+            if (surname === '') {
+                showError(surnameInput, surnameError, 'Please enter your surname.');
+                isValid = false;
+            }
+
+            if (email === '' || !validateEmail(email)) {
+                showError(emailInput, emailError, 'Please enter a valid email.');
+                isValid = false;
+            }
+
+            if (phone === '' || !validatePhone(phone)) {
+                showError(phoneInput, phoneError, 'Please enter a valid phone number.');
+                isValid = false;
+            }
+
+            if (message === '') {
+                showError(messageInput, messageError, 'Please enter a message.');
                 isValid = false;
             }
 
             if (isValid) {
-                console.log("Form submitted with:", email, password);
-                loginForm.submit();
+                contactForm.submit();
             }
         });
     }
+});
+
 
     const registerForm = document.querySelector('.register-form');
     if (registerForm) {
@@ -177,4 +208,3 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});

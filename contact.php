@@ -1,3 +1,33 @@
+<?php
+require_once 'database.php';
+require_once 'ContactT.php';
+
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'] ?? '';
+    $surname = $_POST['surname'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $messageContent = $_POST['message'] ?? '';
+
+    if (empty($name) || empty($surname) || empty($email) || empty($phone) || empty($messageContent)) {
+        $message = 'All fields are required.';
+    } else {
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $contact = new ContactT($db);
+
+        if ($contact->save($name, $surname, $email, $phone, $messageContent)) {
+            $message = 'Your message has been successfully sent!';
+        } else {
+            $message = 'There was an error sending your message. Please try again.';
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,11 +54,12 @@
             <li><a href="news.php">News</a></li>
             <li><a href="login.php">Log In</a></li>
         </ul>
-      </nav>
+    </nav>
 
-      <div class="contact-container">
+    <div class="contact-container">
         <h2 class="contact-title">Contact Us</h2>
-        <form action="#" method="post" class="contact-form">
+
+        <form method="post" class="contact-form">
             <label for="name" class="contact-label">Name</label>
             <input type="text" id="name" name="name" class="contact-input">
             <p id="name-error" class="error-message" style="display: none;"></p>
@@ -47,13 +78,14 @@
             
             <label for="message" class="contact-label">Message</label>
             <textarea id="message" name="message" class="contact-textarea" rows="4"></textarea>
-            <p id="message-error" class="error-message" style="display: none;"></p>
+            <p id="message-error" class="error-message" style="display: none;"></p>
+
+            <?php if ($message): ?>
+            <p class="message"><?php echo $message; ?></p>
+            <?php endif; ?>
 
             <button type="submit" class="contact-button">Submit</button>
         </form>
     </div>
-
-      
-    
 </body>
 </html>
