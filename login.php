@@ -3,6 +3,8 @@ session_start();
 include_once 'database.php';
 include_once 'users.php';
 
+$error_message = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db = new Database();
     $connection = $db->getConnection();
@@ -16,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: home.php");
         exit;
     } else {
-        echo "Invalid login credentials!";
+        $error_message = "Your email or password is wrong.";
     }
 }
 ?>
@@ -60,7 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="password" class="login-label">Password</label>
             <input type="password" id="password" name="password" class="login-input">
             <p id="password-error" class="error-message" style="display: none;">Please enter your password.</p>
-    
+            
+            <?php if (!empty($error_message)): ?>
+                <p class="error-message" style="color: red;"><?= htmlspecialchars($error_message) ?></p>
+            <?php endif; ?>
+
             <button type="submit" class="login-button">Log In</button>
             <a href="register.php" class="register-button">Register</a>
         </form>

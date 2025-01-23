@@ -20,14 +20,11 @@ class Users {
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':password', $hashed_password);
     
-        if ($stmt->execute()) {
-            return true;
-        }
-        return false;
+        return $stmt->execute();
     }
     
     public function login($email, $password) {
-        $query = "SELECT id, username, email, phone, password FROM {$this->table_name} WHERE email = :email";
+        $query = "SELECT id, password FROM {$this->table_name} WHERE email = :email";
     
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $email);
@@ -38,13 +35,9 @@ class Users {
 
             if (password_verify($password, $row['password'])) {
                 $_SESSION['user_id'] = $row['id'];
-                $_SESSION['email'] = $row['email'];
+                $_SESSION['email'] = $email;
                 return true;
-            } else {
-                echo "Password mismatch!";
             }
-        } else {
-            echo "No user found with that email!";
         }
         return false;
     }
