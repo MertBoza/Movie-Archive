@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +26,11 @@
             <li><a href="login.php">Log In</a></li>
         </ul>
     </nav>
+
+    <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+    <button onclick="location.href='create_news.php'">Create News</button>
+    <button onclick="location.href='edit_news.php'">Edit News</button>
+    <?php endif; ?>
 
     <div class="news-container">
         <h1 class="news-title">Latest Movie News</h1>

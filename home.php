@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +27,10 @@
         </ul>
       </nav>
 
+    <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+    <button class="details-button" onclick="location.href='create_movie.php'">Create New Movie</button>
+    <button class="details-button" onclick="location.href='edit_movies.php'">Edit Movies</button>
+    <?php endif; ?>
 
       <div class="movie-cards-container">
         <div class="movie-card">

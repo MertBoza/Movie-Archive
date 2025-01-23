@@ -13,14 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if ($users->login($email, $password)) {
-        $_SESSION['user_id'] = 1;
+    // Fetch user info first
+    $user_info = $users->getUserByEmail($email);
+    
+    // Check if user exists and verify password
+    if ($user_info && password_verify($password, $user_info['password'])) {
+        $_SESSION['user_id'] = $user_info['id'];
+        $_SESSION['email'] = $email;
+        $_SESSION['is_admin'] = $user_info['is_admin'];  // Store the admin status
+        
+        // Redirect to home page after successful login
         header("Location: home.php");
         exit;
     } else {
         $error_message = "Your email or password is wrong.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <nav class="navbar">
         <div class="logo">
-            <a href="home.html">
+            <a href="home.php">
                 <img class="logo1" src="assets/navLogo.jpg" alt="navLogo">
             </a>
         </div>
@@ -48,7 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="contact.php">Contact</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="news.php">News</a></li>
-            <li><a href="login.php">Log In</a></li>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <li><a href="logout.php">Log Out</a></li>
+            <?php else: ?>
+                <li><a href="login.php">Log In</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
