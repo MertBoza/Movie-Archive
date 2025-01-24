@@ -36,14 +36,13 @@ class Users {
         return false;
     }
     
-    // New method to fetch user data by email
     public function getUserByEmail($email) {
         $query = "SELECT id, password, is_admin FROM {$this->table_name} WHERE email = :email";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
     
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Return the user data (id, password, is_admin)
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 }
 ?>

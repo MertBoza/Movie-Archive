@@ -13,16 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Fetch user info first
     $user_info = $users->getUserByEmail($email);
-    
-    // Check if user exists and verify password
+   
     if ($user_info && password_verify($password, $user_info['password'])) {
         $_SESSION['user_id'] = $user_info['id'];
         $_SESSION['email'] = $email;
-        $_SESSION['is_admin'] = $user_info['is_admin'];  // Store the admin status
-        
-        // Redirect to home page after successful login
+        $_SESSION['is_admin'] = $user_info['is_admin'];  
         header("Location: home.php");
         exit;
     } else {

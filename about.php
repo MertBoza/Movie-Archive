@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +9,27 @@
     <title>Movie Archive</title>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="home.html">
-                <img class="logo1" src="assets/navLogo.jpg" alt="navLogo">
-            </a>
-        </div>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <ul class="nav-links">
-            <li><a href="home.php">Home</a></li>
-            <li><a href="contact.php">Contact</a></li>
-            <li><a href="about.php">About</a></li>
-            <li><a href="news.php">News</a></li>
+<nav class="navbar">
+    <div class="logo">
+        <a href="home.php">
+            <img class="logo1" src="assets/navLogo.jpg" alt="navLogo">
+        </a>
+    </div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <ul class="nav-links">
+        <li><a href="home.php">Home</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="news.php">News</a></li>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <li><a href="logout.php">Log Out</a></li>
+        <?php else: ?>
             <li><a href="login.php">Log In</a></li>
-        </ul>
-      </nav>
+        <?php endif; ?>
+    </ul>
+</nav>
 
       <div class="about-container">
         <h2 class="about-title">About Us</h2>
