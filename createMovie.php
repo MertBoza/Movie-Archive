@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'database.php';
 require_once 'Movie.php';
 
@@ -33,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -68,29 +68,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ul>
 </nav>
 
-    <div class="contact-container">
-        <h2 class="contact-title">Create New Movie</h2>
+<div class="contact-container">
+    <h2 class="contact-title">Create New Movie</h2>
 
-        <form method="post" enctype="multipart/form-data" class="contact-form">
-    <label for="title" class="contact-label">Movie Title</label>
-    <input type="text" id="title" name="title" class="contact-input">
+    <form method="post" enctype="multipart/form-data" class="contact-form">
+        <label for="title" class="contact-label">Movie Title</label>
+        <input type="text" id="title" name="title" class="contact-input">
 
-    <label for="director" class="contact-label">Director</label>
-    <input type="text" id="director" name="director" class="contact-input">
+        <label for="director" class="contact-label">Director</label>
+        <input type="text" id="director" name="director" class="contact-input">
 
-    <label for="categories" class="contact-label">Categories</label>
-    <input type="text" id="categories" name="categories" class="contact-input" placeholder="e.g., Action, Drama">
+        <label for="categories" class="contact-label">Categories</label>
+        <input type="text" id="categories" name="categories" class="contact-input" placeholder="e.g., Action, Drama">
 
-    <label for="image" class="contact-label">Movie Image</label>
-    <input type="file" id="image" name="image" class="contact-input">
+        <label for="image" class="contact-label">Movie Image</label>
+        <input type="file" id="image" name="image" class="contact-input">
 
-    <?php if ($message): ?>
+        <?php if ($message): ?>
             <p class="message"><?php echo $message; ?></p>
         <?php endif; ?>
 
-    <button type="submit" class="contact-button">Add Movie</button>
-</form>
-
-    </div>
+        <button type="submit" class="contact-button">Add Movie</button>
+    </form>
+</div>
 </body>
 </html>

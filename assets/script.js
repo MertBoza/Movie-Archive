@@ -82,8 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-
 
     const registerForm = document.querySelector('.register-form');
     if (registerForm) {
@@ -147,64 +145,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        const nameInput = document.getElementById('name');
-        const surnameInput = document.getElementById('surname');
-        const emailInput = document.getElementById('email');
-        const phoneInput = document.getElementById('phone');
-        const messageInput = document.getElementById('message');
+    // Slider functionality
+    let currentIndex = 0;
 
-        const nameError = document.getElementById('name-error');
-        const surnameError = document.getElementById('surname-error');
-        const emailError = document.getElementById('email-error');
-        const phoneError = document.getElementById('phone-error');
-        const messageError = document.getElementById('message-error');
+    function moveSlide(direction) {
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+        currentIndex += direction;
 
-            const name = nameInput.value.trim();
-            const surname = surnameInput.value.trim();
-            const email = emailInput.value.trim();
-            const phone = phoneInput.value.trim();
-            const message = messageInput.value.trim();
+        if (currentIndex < 0) {
+            currentIndex = totalSlides - 1;
+        } else if (currentIndex >= totalSlides) {
+            currentIndex = 0;
+        }
 
-            hideError(nameInput, nameError);
-            hideError(surnameInput, surnameError);
-            hideError(emailInput, emailError);
-            hideError(phoneInput, phoneError);
-            hideError(messageInput, messageError);
-
-            let isValid = true;
-
-            if (name === '') {
-                showError(nameInput, nameError, 'Please enter your name.');
-                isValid = false;
-            }
-
-            if (surname === '') {
-                showError(surnameInput, surnameError, 'Please enter your surname.');
-                isValid = false;
-            }
-
-            if (email === '' || !validateEmail(email)) {
-                showError(emailInput, emailError, 'Please enter a valid email.');
-                isValid = false;
-            }
-
-            if (phone === '' || !validatePhone(phone)) {
-                showError(phoneInput, phoneError, 'Please enter a valid phone number.');
-                isValid = false;
-            }
-
-            if (message === '') {
-                showError(messageInput, messageError, 'Please enter a message.');
-                isValid = false;
-            }
-
-            if (isValid) {
-                contactForm.submit();
-            }
-        });
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
+
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    prevButton.addEventListener('click', function() {
+        moveSlide(-1);
+    });
+    nextButton.addEventListener('click', function() {
+        moveSlide(1);
+    });
+});
