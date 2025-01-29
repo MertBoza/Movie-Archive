@@ -145,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Slider functionality
     let currentIndex = 0;
 
     function moveSlide(direction) {
@@ -172,4 +171,5 @@ document.addEventListener('DOMContentLoaded', function() {
     nextButton.addEventListener('click', function() {
         moveSlide(1);
     });
+
 });

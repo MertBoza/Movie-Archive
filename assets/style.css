@@ -498,3 +498,105 @@ button.prev {
 button.next {
   right: 10px;
 }
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 10px; /* Adds space between the buttons */
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.edit-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #3c3c3c;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.edit-title {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.edit-input,
+.edit-textarea {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;  
+  background-color: lightgray;
+}
+
+.edit-input:focus, .edit-textarea:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.edit-button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #555;
+}
+
+.message {
+  color: green;
+  margin-top: 18px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.back-button {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #777;
+}
+

@@ -3,6 +3,11 @@ session_start();
 require_once 'database.php';
 require_once 'Movie.php';
 
+if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
+    header("Location: login.php");
+    exit();
+}
+
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

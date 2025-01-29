@@ -24,5 +24,35 @@ class Movie {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function delete($movieId) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $movieId);
+        return $stmt->execute();
+    }
+
+    public function getMovieById($movieId) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $movieId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function update($movieId, $title, $director, $categories, $image_path) {
+        $query = "UPDATE " . $this->table_name . " SET title = :title, director = :director, categories = :categories, image_path = :image_path WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+    
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':director', $director);
+        $stmt->bindParam(':categories', $categories);
+        $stmt->bindParam(':image_path', $image_path);
+        $stmt->bindParam(':id', $movieId);
+    
+        return $stmt->execute();
+    }
+    
+    
 }
 ?>
