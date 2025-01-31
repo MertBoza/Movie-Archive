@@ -24,6 +24,7 @@ $movies = $movie->getAllMovies();
         }
     }
     </script>
+    <script src="assets/script.js"></script>
     <title>Movie Archive</title>
 </head>
 <body>
